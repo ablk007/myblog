@@ -1,0 +1,22 @@
+/* Import all CSS files */
+@import url('/assets/vendor/fontawesome/css/all.css');
+@import url('/assets/vendor/ionio-icon/css/iconoir.css');
+@import url('/assets/vendor/animation/animate.min.css');
+@import url('/assets/vendor/tabler-icons/tabler-icons.css');
+@import url('/assets/vendor/flag-icons-master/flag-icon.css');
+@import url('/assets/vendor/bootstrap/bootstrap.min.css');
+@import url('/assets/vendor/simplebar/simplebar.css');
+@import url('/assets/css/style.css');
+@import url('/assets/css/responsive.css');
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
