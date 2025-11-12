@@ -1,8 +1,8 @@
 import express from 'express';
+import cors from 'cors';
 import connectDB from './config/db.js';
 import blogRoutes from './routes/blogRoutes.js';
 import loginRoutes from './routes/loginRoutes.js';
-//import dotenv from 'dotenv';
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -10,23 +10,17 @@ const PORT = process.env.PORT || 5000;
 // Connect to MongoDB
 connectDB();
 
+// CORS configuration - Allow all origins
+app.use(cors({
+  origin: '*',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true
+}));
+
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
-// CORS middleware
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  
-  // Handle preflight requests
-  if (req.method === 'OPTIONS') {
-    return res.sendStatus(200);
-  }
-  
-  next();
-});
 
 // Health check endpoint
 app.get('/health', (req, res) => {
