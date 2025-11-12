@@ -62,7 +62,7 @@ export const login = async (req, res) => {
 // Register Controller
 export const register = async (req, res) => {
   try {
-    const { username, email, password } = req.body;
+    const { username, email, password, role } = req.body;
 
     // Validation
     if (!username || !email || !password) {
@@ -86,7 +86,7 @@ export const register = async (req, res) => {
       username,
       email,
       password,
-      role: 'admin'
+      role: role || 'user' // Use provided role or default to 'user'
     });
 
     // Create JWT token
